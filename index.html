@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pengingat Berulang</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4f6bed">
+  <link rel="apple-touch-icon" href="icon-192.png">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>⏰ Pengingat Berulang</h1>
+      <button id="btnNotif" type="button">Aktifkan notifikasi</button>
+    </header>
+
+    <section class="card">
+      <h2 id="formTitle">Tambah Jadwal</h2>
+      <input id="title" placeholder="Judul acara" maxlength="80">
+      <textarea id="note" placeholder="Catatan singkat (opsional)" maxlength="200" rows="2"></textarea>
+
+      <div class="days" id="days"></div>
+
+      <div class="row">
+        <label>Jam <input type="time" id="time" value="08:00"></label>
+        <label class="switch"><input type="checkbox" id="active" checked> Aktif</label>
+      </div>
+
+      <div class="row">
+        <button id="btnSave" type="button" class="primary">Simpan</button>
+        <button id="btnCancel" type="button" hidden>Batal edit</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Daftar Jadwal <small id="count"></small></h2>
+      <ul id="list"></ul>
+    </section>
+  </main>
+
+  <div id="toast" hidden></div>
+
+  <script src="scheduler.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");
+  </script>
+</body>
+</html>
